@@ -1,6 +1,12 @@
+import Banner from "../../components/Home/Banner";
+import Products from "../../components/Home/Products";
+
 const Home=()=>{
     return (
-        <div>This is home page</div>
+        <div>
+            <Banner></Banner>
+            <Products></Products>
+        </div>
     )
 }
 export default Home;
