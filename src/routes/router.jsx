@@ -9,6 +9,7 @@ import Registration from "../pages/Registration/Registration";
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import Error from "../pages/Error/Error";
 import Profile from "../components/Dashboard/Profile";
+import PrivateRoute from "./PrivateRoute";
 
 const router=createBrowserRouter([
     {
@@ -37,14 +38,14 @@ const router=createBrowserRouter([
                 element:<Login></Login>
             },
             {
-                path:'/registration',
+                path:'/register',
                 element:<Registration></Registration>
             }
         ]
     },
     {
         path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
+        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
             {
                 path:'',
