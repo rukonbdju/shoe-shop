@@ -1,7 +1,9 @@
-const Profile=()=>{
-    return(
-        <div>
-            this is user profile page
+
+const Profile = () => {
+        
+    return (
+        <div className="">
+            <h1 className="text-center text-4xl">Personal Info</h1>
         </div>
     )
 }
