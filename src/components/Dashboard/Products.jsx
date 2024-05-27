@@ -11,6 +11,7 @@ const Products = () => {
             .then(data => setProducts(data))
     }, [])
     console.log(products)
+    
     return (
         <div>
             <div className="overflow-x-auto w-4/5 mx-auto mb-10">
@@ -20,46 +21,24 @@ const Products = () => {
                     <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Add new Product</button>
                     <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                         <div className="modal-box">
-                            <form action="/submit-product" method="post">
+                            <div>
                                 <div>
-                                    <label for="productName">Product Name:</label>
-                                    <input type="text" id="productName" name="productName" required/>
+                                    <input className="border border-slate-700 rounded w-full p-2 my-2" type="text" name="title" placeholder="Enter title"  required/>
                                 </div>
                                 <div>
-                                    <label for="productDescription">Product Description:</label>
-                                    <textarea id="productDescription" name="productDescription" required></textarea>
+                                    <textarea className="border border-slate-700 rounded w-full p-2 my-2" name="summary" placeholder="Enter summary" required></textarea>
                                 </div>
                                 <div>
-                                    <label for="productPrice">Price:</label>
-                                    <input type="number" id="productPrice" name="productPrice" step="0.01" required/>
+                                    <input className="border border-slate-700 rounded w-full p-2 my-2" type="number" name="productPrice" placeholder="Enter price" required/>
                                 </div>
                                 <div>
-                                    <label for="productCategory">Category:</label>
-                                    <select id="productCategory" name="productCategory" required>
-                                        <option value="">Select a category</option>
-                                        <option value="electronics">Electronics</option>
-                                        <option value="fashion">Fashion</option>
-                                        <option value="home">Home</option>
-                                        <option value="books">Books</option>
-                                        <option value="other">Other</option>
-                                    </select>
+                                    
+                                    <input className="border border-slate-700 rounded w-full p-2 my-2" type="text" name="imageUrl" placeholder="Enter image url" required/>
                                 </div>
                                 <div>
-                                    <label for="productImage">Product Image:</label>
-                                    <input type="file" id="productImage" name="productImage" accept="image/*" required/>
+                                    <input className="border border-slate-700 rounded w-full p-2 my-2" type="number" name="stock" placeholder="Enter quantity" required/>
                                 </div>
-                                <div>
-                                    <label for="productStock">Stock Quantity:</label>
-                                    <input type="number" id="productStock" name="productStock" required/>
-                                </div>
-                                <div>
-                                    <label for="productSKU">SKU:</label>
-                                    <input type="text" id="productSKU" name="productSKU" required/>
-                                </div>
-                                <div>
-                                    <button type="submit">Add Product</button>
-                                </div>
-                            </form>
+                            </div>
                             <div className="modal-action">
                                 <form method="dialog">
                                     {/* if there is a button in form, it will close the modal */}
@@ -72,7 +51,7 @@ const Products = () => {
 
                 <table className="table">
                     <tbody className="flex flex-col gap-2">
-                        {products?.map(product => <Product key={product.id} product={product}></Product>)}
+                        {products?.map(product => <Product key={product.id} setProducts={setProducts} product={product}></Product>)}
                     </tbody>
                 </table>
             </div>
