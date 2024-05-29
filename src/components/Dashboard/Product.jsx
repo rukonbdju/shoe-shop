@@ -3,9 +3,11 @@ import DeleteProduct from "./DeleteProduct";
 import EditProduct from "./EditProduct";
 
 const Product = ({ product, setProducts }) => {
-    const [openDeleteModal,setOpenDeleteModal]=useState(false)
-    const { id, Title, brand, price, photoUrl, summery } = product;
-    
+    const [openDeleteModal, setOpenDeleteModal] = useState(false)
+    const [openEditModal, setOpenEditModal] = useState(false)
+    const [shoe,setShoe]=useState(product)
+    const { id, Title, brand, price, photoUrl, summery,stock } = shoe;
+
     return (
         <tr className="bg-white rounded">
             <td>
@@ -24,15 +26,20 @@ const Product = ({ product, setProducts }) => {
             <td>
                 <p>{summery}</p>
             </td>
+            <td>
+                <p>Stock: {stock}</p>
+            </td>
             <td className="font-bold">BDT {price}</td>
             <th>
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button className="btn btn-xs" onClick={()=>setOpenDeleteModal(true)}>Delete</button>
-                {openDeleteModal&&<DeleteProduct product={product} setProducts={setProducts} setOpenDeleteModal={setOpenDeleteModal}></DeleteProduct>}
-                
+                <button className="btn btn-xs" onClick={() => setOpenDeleteModal(true)}>Delete</button>
+                {openDeleteModal && <DeleteProduct product={product} setProducts={setProducts} setOpenDeleteModal={setOpenDeleteModal}></DeleteProduct>}
+
             </th>
             <th>
-                <EditProduct></EditProduct>
+                <button className="btn btn-xs" onClick={() => setOpenEditModal(true)}>Edit</button>
+                {openEditModal&&<EditProduct shoe={shoe} setShoe={setShoe} setOpenEditModal={setOpenEditModal}></EditProduct>}
+                
             </th>
         </tr>
     )

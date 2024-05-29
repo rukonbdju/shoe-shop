@@ -6,6 +6,7 @@ import AddProduct from "./AddProduct"
 
 const Products = () => {
     const [products, setProducts] = useState([])
+    const [isAddProduct,setIsAddProduct]=useState(false)
     console.log(products)
     useEffect(() => {
         fetch("../../../public/data.json")
@@ -19,8 +20,9 @@ const Products = () => {
             <div className="overflow-x-auto w-4/5 mx-auto mb-10">
                 <div className="flex flex-row justify-between w-full items-center my-5">
                     <h1 className=" text-4xl">All Products</h1>
-                    {/* Open the modal using document.getElementById('ID').showModal() method */}
-                    <AddProduct></AddProduct>
+                    <button className="btn" onClick={()=>setIsAddProduct(true)}>Add New Product</button>
+                    {isAddProduct&&<AddProduct setIsAddProduct={setIsAddProduct} setProducts={setProducts} products={products}></AddProduct>}
+                    
                 </div>
 
                 <table className="table">

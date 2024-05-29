@@ -10,6 +10,7 @@ import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import Error from "../pages/Error/Error";
 import Profile from "../components/Dashboard/Profile";
 import PrivateRoute from "./PrivateRoute";
+import ProductDetails from "../pages/Registration/ProductDetails/ProductDetails";
 
 const router=createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router=createBrowserRouter([
                 element:<Products></Products>
             },
             {
+                path:'/product/:id',
+                element:<ProductDetails></ProductDetails>
+            },
+            {
                 path:'/about',
                 element:<About></About>
             },
@@ -45,8 +50,8 @@ const router=createBrowserRouter([
     },
     {
         path:'/dashboard',
-        //element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-        element:<DashboardLayout></DashboardLayout>,
+        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        //element:<DashboardLayout></DashboardLayout>,
         children:[
             {
                 path:'',
